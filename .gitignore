@@ -1,0 +1,17 @@
+# Java
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Notes data (оставляем data/ и data/.gitkeep в репозитории)
+data/notes.csv
+
+# Optional
+out/
