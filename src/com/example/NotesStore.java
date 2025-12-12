@@ -25,7 +25,7 @@ public class NotesStore {
     public int add(String text) throws IOException {
         ensureStorage();
 
-        // Нормализуем текст: запрещаем переносы строк
+        // Нормализуем текст: запрещаем переносы строкghhg
         String clean = text.replace("\r", " ").replace("\n", " ").trim();
 
         int nextId = nextId();

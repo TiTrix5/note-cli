@@ -33,7 +33,7 @@ public class App {
                     System.out.print(out);
                     break;
                 }
-// Для альтернативной фичи "rm" см. заметку в README: можно реализовать в отдельной ветке.
+// Для альтернативной фичи "rm" см. заметкуjj в README: можно реализовать в отдельной ветке.
                 default:
                     System.out.println("Unknown cmd: " + cmd);
                     printUsage();
