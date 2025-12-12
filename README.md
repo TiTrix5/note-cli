@@ -1,77 +1,30 @@
-# notes-cli
-
-**Автор:** <ВАШ_GITHUB_NICK> — https://github.com/<ВАШ_GITHUB_NICK>
-
-Консольная утилита для хранения текстовых заметок в файле `data/notes.csv`.
-
-## Команды
-
-### Добавить заметку
-```bash
+Команды запуска
+Все команды выполняются через:
+java -cp src com.example.App --cmd=<команда> [аргументы]
+Добавить заметку
 java -cp src com.example.App --cmd=add --text="Купить хлеб"
-```
-
-### Показать список
-```bash
+Показать список заметок
 java -cp src com.example.App --cmd=list
-```
+Удалить заметку по ID
+java -cp src com.example.App --cmd=rm --id=1
+Посчитать количество заметок
+java -cp src com.example.App --cmd=count
 
-Если заметок нет — выводится:
-```
-(empty)
-```
-
-
-## Формат хранения
-
-Каждая строка файла `data/notes.csv`:
-```
-ID;ТЕКСТ
-```
-
-Пример:
-```
+Примеры заметок (файл data/notes.csv)
 1;Купить молоко
 2;Позвонить другу
-```
-
-## Локальный запуск (без Maven)
-
-1) Компиляция:
-```bash
-javac src/com/example/*.java
-```
-
-2) Запуск:
-```bash
-java -cp src com.example.App --cmd=add --text="Купить хлеб"
-java -cp src com.example.App --cmd=list
-```
-
-## Docker
-
-Сборка:
-```bash
-docker build -t notes-cli:dev .
-```
-
-Запуск с volume (данные сохраняются на хосте):
-```bash
-mkdir -p data
-docker run --rm -v "$PWD/data:/app/data" notes-cli:dev --cmd=add --text="Test"
-docker run --rm -v "$PWD/data:/app/data" notes-cli:dev --cmd=list
-```
-
-### PowerShell (Windows)
-```powershell
-mkdir data -Force | Out-Null
-docker run --rm -v "${PWD}\data:/app/data" notes-cli:dev --cmd=add --text="Test"
-docker run --rm -v "${PWD}\data:/app/data" notes-cli:dev --cmd=list
-```
-
-## Версии (SemVer)
-
-- **v1.0.0** — команды `add` и `list`.
-
-## Заметка про альтернативную фичу `rm`
-По ТЗ допускается вместо `count` реализовать `rm` (удаление по `--id`). Делайте это в отдельной ветке `feature/...` и через PR в `main`.
+3;Test
+4;Test
+История версий
+v1.0.0 — Initial release
+•    Основной функционал приложения
+•    Добавление заметки (add)
+•    Просмотр списка (list)
+•    Конфигурирование CI с GitHub Actions
+•    Dockerfile для запуска в контейнере
+v1.1.0 — Add count command
+•    Добавлена команда count
+•    Теперь приложение может показывать количество заметок
+•    Создан Pull Request из ветки feature
+•    Выполнен merge → релиз опубликован
+<img width="1915" height="1027" alt="Снимок экрана 2025-12-12 224546" src="https://github.com/user-attachments/assets/6c79a480-4552-4fd4-98b6-bcb11028430c" />
