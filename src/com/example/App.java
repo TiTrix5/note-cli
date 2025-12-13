@@ -33,14 +33,17 @@ public class App {
                     System.out.print(out);
                     break;
                 }
-// Для альтернативной фичи "rm" см. заметкуjj в README: можно реализовать в отдельной ветке.
+                case "count": {
+                    int count = store.count();
+                    System.out.println(count);
+                    break;
+                }
                 default:
                     System.out.println("Unknown cmd: " + cmd);
                     printUsage();
                     System.exit(3);
             }
         } catch (Exception e) {
-            // Простой вывод для CLI-утилиты
             System.out.println("Error: " + e.getMessage());
             System.exit(10);
         }
@@ -54,7 +57,6 @@ public class App {
             if (eq <= 2) continue;
             String key = a.substring(2, eq).trim();
             String value = a.substring(eq + 1).trim();
-            // значение уже приходит без кавычек от shell, если оно было "..."
             map.put(key, value);
         }
         return map;
@@ -64,5 +66,6 @@ public class App {
         System.out.println("Usage:");
         System.out.println("  --cmd=add --text=\"Купить хлеб\"");
         System.out.println("  --cmd=list");
+        System.out.println("  --cmd=count");
     }
 }

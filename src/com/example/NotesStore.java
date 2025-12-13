@@ -16,7 +16,6 @@ public class NotesStore {
         this(Paths.get("data"), Paths.get("data", "notes.csv"));
     }
 
-    // Для тестов/расширений
     public NotesStore(Path dataDir, Path file) {
         this.dataDir = dataDir;
         this.file = file;
@@ -25,12 +24,15 @@ public class NotesStore {
     public int add(String text) throws IOException {
         ensureStorage();
 
-        // Нормализуем текст: запрещаем переносы строкghhg
         String clean = text.replace("\r", " ").replace("\n", " ").trim();
 
         int nextId = nextId();
-        try (BufferedWriter w = Files.newBufferedWriter(file, StandardCharsets.UTF_8,
-                StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+        try (BufferedWriter w = Files.newBufferedWriter(
+                file,
+                StandardCharsets.UTF_8,
+                StandardOpenOption.CREATE,
+                StandardOpenOption.APPEND
+        )) {
             w.write(nextId + ";" + clean);
             w.newLine();
         }
@@ -45,9 +47,14 @@ public class NotesStore {
         }
         StringBuilder sb = new StringBuilder();
         for (String l : lines) {
-            if (!l.isBlank()) sb.append(l).append("\n");
+            sb.append(l).append("\n");
         }
         return sb.toString();
+    }
+
+    public int count() throws IOException {
+        ensureStorage();
+        return readAllRawLines().size();
     }
 
     private void ensureStorage() throws IOException {
@@ -79,7 +86,8 @@ public class NotesStore {
             try {
                 int id = Integer.parseInt(idStr);
                 if (id > max) max = id;
-            } catch (NumberFormatException ignored) {}
+            } catch (NumberFormatException ignored) {
+            }
         }
         return max + 1;
     }
