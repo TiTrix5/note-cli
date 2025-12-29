@@ -48,11 +48,11 @@ docker build -t notes-cli:dev .
 
 Важно: команда монтирует папку data/ с хоста, чтобы заметки сохранялись после остановки контейнера.
 
-Добавить заметку docker run --rm -v "%cd%/data:/app/data" notes-cli:dev --cmd=add --text="Купить хлеб"
+Добавить заметку docker run --rm -v "${PWD}/data:/app/data" notes-cli:dev --cmd=add --text="Купить хлеб"
 
-Показать список заметок docker run --rm -v "%cd%/data:/app/data" notes-cli:dev --cmd=list
+Показать список заметок docker run --rm -v "${PWD}/data:/app/data" notes-cli:dev --cmd=list
 
-Посчитать количество заметок docker run --rm -v "%cd%/data:/app/data" notes-cli:dev --cmd=count
+Посчитать количество заметок docker run --rm -v "${PWD}/data:/app/data" notes-cli:dev --cmd=count
 
 История версий v1.0.0 — Initial release
 
