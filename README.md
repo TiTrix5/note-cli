@@ -32,11 +32,11 @@ id;текст
 
 ▶ Запуск локально (без Docker) Компиляция javac src/com/example/*.java
 
-Добавить заметку java -cp src com.example.App --cmd=add --text="Купить хлеб"
+Добавить заметку java -cp . com.example.App --cmd=add --text="Купить хлеб"
 
-Показать список java -cp src com.example.App --cmd=list
+Показать список java -cp . com.example.App --cmd=list
 
-Посчитать количество java -cp src com.example.App --cmd=count
+Посчитать количество java -cp . com.example.App --cmd=count
 
 Запуск через Docker Сборка Docker-образа
 
